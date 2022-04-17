@@ -1,9 +1,13 @@
 import React, { useRef } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import "./Login.css";
 import SocialLogin from "./SocialLogin/SocialLogin";
+import { ToastContainer,toast  } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Login = () => {
   const emailRef = useRef('');
@@ -16,6 +20,10 @@ const Login = () => {
     loading,
     error,
   ] = useSignInWithEmailAndPassword(auth);
+
+  const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(
+    auth
+  );
 
   const handelSignIn = event =>{
     event.preventDefault();
@@ -32,6 +40,15 @@ const Login = () => {
 
   if(user){
     navigate(from, { replace: true });
+  }
+
+  const handelForgetPassword = async () =>{
+    const email = emailRef.current.value;
+    console.log(email);
+    if(email){
+      await sendPasswordResetEmail(email);
+      toast('Send email');
+    }
   }
   return (
     <div className="form-container h-100 ">
@@ -66,17 +83,18 @@ const Login = () => {
           />
           <div className="d-flex justify-content-between">
             <p className="forgot-password text-right">
-              Forgot <Link className="text-decoration-none" to="#">password?</Link>
+              Forgot <button className="btn btn-link text-decoration-none" onClick={handelForgetPassword}>password?</button>
             </p>
 
             <p className="forgot-password text-right">
               You have no account? Please <Link className="text-decoration-none" to="/registration">Sign Up</Link>
             </p>
-          </div>
-          <SocialLogin></SocialLogin>
-        </form>
-      </div>
-      
+            </div>
+            <SocialLogin></SocialLogin>
+            
+            </form>
+            </div>
+            <ToastContainer />
     </div>
   );
 };
