@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './Subject.css'
 
 const Subject = ({subject}) => {
@@ -17,6 +18,10 @@ const Subject = ({subject}) => {
                 <p>{no_of_class}</p>
                 <p>{price}</p>
             </div>
+
+            <Link to="/checkout">
+            <button className="btn btn-primary"> Enroll</button>
+            </Link>
 
             
         
