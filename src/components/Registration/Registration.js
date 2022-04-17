@@ -27,6 +27,10 @@ const navigate = useNavigate();
     createUserWithEmailAndPassword(email, password);
   }
 
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
 const navigateLogin = () => {
   navigate('/login');
 }

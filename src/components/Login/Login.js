@@ -3,6 +3,7 @@ import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import "./Login.css";
+import SocialLogin from "./SocialLogin/SocialLogin";
 
 const Login = () => {
   const emailRef = useRef('');
@@ -21,6 +22,10 @@ const Login = () => {
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
     signInWithEmailAndPassword(email, password);
+  }
+
+  if (loading) {
+    return <p>Loading...</p>;
   }
 
   let from = location.state?.from?.pathname || "/";
@@ -68,8 +73,10 @@ const Login = () => {
               You have no account? Please <Link className="text-decoration-none" to="/registration">Sign Up</Link>
             </p>
           </div>
+          <SocialLogin></SocialLogin>
         </form>
       </div>
+      
     </div>
   );
 };
