@@ -1,17 +1,41 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useRef } from "react";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { Link, useNavigate } from "react-router-dom";
+import auth from "../../firebase.init";
 import "./Login.css";
 
 const Login = () => {
+  const emailRef = useRef('');
+  const passwordRef = useRef('');
+  const navigate = useNavigate();
+
+  const [
+    signInWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useSignInWithEmailAndPassword(auth);
+
+  const handelSignIn = event =>{
+    event.preventDefault();
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+    signInWithEmailAndPassword(email, password);
+  }
+
+  if(user){
+    navigate('/login');
+  }
   return (
     <div className="form-container h-100 ">
       <div className="d-flex justify-content-center mt-5">
-        <form className="w-50 form p-5">
+        <form className="w-50 form p-5" onSubmit={handelSignIn}>
           <h2 className="text-center mb-3">Sign In</h2>
           <div className="form-group mb-3">
             <label>Email address</label>
             <input
               type="email"
+              ref={emailRef}
               className="form-control"
               placeholder="Enter email"
               required
@@ -21,6 +45,7 @@ const Login = () => {
             <label>Password</label>
             <input
               type="password"
+              ref={passwordRef}
               className="form-control"
               placeholder="Enter password"
               required

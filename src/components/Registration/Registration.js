@@ -1,17 +1,53 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useRef } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const Registration = () => {
+
+  const [
+    createUserWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useCreateUserWithEmailAndPassword(auth);
+
+const navigate = useNavigate();
+
+  const nameRef = useRef('');
+  const emailRef = useRef('');
+  const passwordRef = useRef('');
+
+  const handelSignUp = event => {
+    event.preventDefault();
+    const name = nameRef.current.value;
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+
+    createUserWithEmailAndPassword(email, password);
+  }
+
+const navigateLogin = () => {
+  navigate('/login');
+}
+
+if (user) {
+  navigate('/home');
+}
+
+
+
     return (
         <div className="form-container h-100 ">
       <div className="d-flex justify-content-center mt-5">
-        <form className="w-50 form p-5">
+        <form className="w-50 form p-5" onSubmit={handelSignUp}>
           <h2 className="text-center mb-3">Sign Up</h2>
           <div className="form-group mb-3">
             <label>Name</label>
             <input
               type="text"
               name="name"
+              ref={nameRef}
               className="form-control"
               placeholder="Enter name"
               required
@@ -23,6 +59,7 @@ const Registration = () => {
             <input
               type="email"
               name="email"
+              ref={emailRef}
               className="form-control"
               placeholder="Enter email"
               required
@@ -33,6 +70,7 @@ const Registration = () => {
             <input
               type="password"
               name="password"
+              ref={passwordRef}
               className="form-control"
               placeholder="Enter password"
               required
@@ -58,7 +96,7 @@ const Registration = () => {
           
 
             <p className="forgot-password text-right">
-              Already have account? Please <Link className="text-decoration-none" to="/login">Sign In</Link>
+              Already have account? Please <Link className="text-decoration-none" to="/login" onClick={navigateLogin}>Sign In</Link>
             </p>
         </form>
       </div>
@@ -66,4 +104,4 @@ const Registration = () => {
     );
 };
 
-export default Registration;
+export default Registration; 
