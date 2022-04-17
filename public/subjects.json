@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "img": "https://i.ibb.co/G0BBK7H/bangla.png",
+        "name": "বাংলা",
+        "no_of_class": "১২ টি  ক্লাস প্রতিমাসে",
+        "price": "১৫০০ টাকা প্রতি মাসে"
+    },
+    {
+        "id": 2,
+        "img": "https://i.ibb.co/sFpXN1P/English.png",
+        "name": "English",
+        "no_of_class": "15 classes per month",
+        "price": "2500 per month"
+    },
+    {
+        "id": 3,
+        "img": "https://i.ibb.co/9y7rsLh/math.png",
+        "name": "গণিত",
+        "no_of_class": "১২ টি  ক্লাস প্রতিমাসে",
+        "price": "২৫০০ টাকা প্রতি মাসে"
+    },
+    {
+        "id": 4,
+        "img": "https://i.ibb.co/bLC3tfz/sadharon-gaan.png",
+        "name": "সাধারণ জ্ঞান",
+        "no_of_class": "১২ টি  ক্লাস প্রতিমাসে",
+        "price": "১৫০০ টাকা প্রতি মাসে"
+    }
+]

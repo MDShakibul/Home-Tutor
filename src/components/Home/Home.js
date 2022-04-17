@@ -1,9 +1,12 @@
 import React from 'react';
+import Slider from './Slider/Slider';
+import Subjects from './Subjects/Subjects';
 
 const Home = () => {
     return (
         <div>
-            <h1>Home</h1>
+            <Slider></Slider>
+            <Subjects></Subjects>
         </div>
     );
 };
