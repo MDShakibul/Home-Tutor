@@ -43,8 +43,8 @@ if (user) {
 
     return (
         <div className="form-container h-100 ">
-      <div className="d-flex justify-content-center mt-5">
-        <form className="w-50 form p-5" onSubmit={handelSignUp}>
+      <div className="d-flex justify-content-center mt-3 mb-3">
+        <form className="w-50 form p-5 pb-3" onSubmit={handelSignUp}>
           <h2 className="text-center mb-3">Sign Up</h2>
           <div className="form-group mb-3">
             <label>Name</label>

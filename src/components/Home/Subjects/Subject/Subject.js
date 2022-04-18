@@ -15,9 +15,9 @@ const Subject = ({ subject }) => {
         <img src={img} alt="" className="bg-danger" />
       </div>
       <div>
-        <p>{name}</p>
-        <p>{description}</p>
-        <p>{price}</p>
+        <p>Subject: {name}</p>
+        <p>Class Info: {description}</p>
+        <p> Cost: {price}</p>
       </div>
         </div>
       </div>

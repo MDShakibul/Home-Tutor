@@ -62,8 +62,8 @@ const Login = () => {
   }
   return (
     <div className="form-container h-100 ">
-      <div className="d-flex justify-content-center mt-5">
-        <form className="w-50 form p-5" onSubmit={handelSignIn}>
+      <div className="d-flex justify-content-center mt-2 mb-2">
+        <form className="w-50 form p-5 " onSubmit={handelSignIn}>
           <h2 className="text-center mb-3">Sign In</h2>
           <div className="form-group mb-3">
             <label>Email address</label>
