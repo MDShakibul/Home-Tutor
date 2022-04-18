@@ -6,8 +6,8 @@ const Blog = () => {
     return (
         <div>
             <h1>Blog</h1>
+            <h3>Question 1: 1</h3>
             <div className='blog'>
-            
             <Footer></Footer>
             </div>
         </div>
