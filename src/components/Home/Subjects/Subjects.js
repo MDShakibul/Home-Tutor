@@ -12,15 +12,16 @@ const Subjects = () => {
   }, []);
   return (
     <div>
-      <h1 className="text-center mt-4 mb-5">All the subjects that are taught</h1>
-
-      {<Container>
-        <Row lg={{ gutterX: 5 }} md= {{ gutterX: 5 }} sm={{ gutterX: 5 }}>
+      <h1 className="text-center mt-4 mb-5">
+        All the subjects that are taught
+      </h1>
+      <div className="container px-4">
+        <div className="row g-5">
           {subjects.map((subject) => (
             <Subject key={subject.id} subject={subject}></Subject>
           ))}
-        </Row>
-      </Container>}
+        </div>
+      </div>
     </div>
   );
 };

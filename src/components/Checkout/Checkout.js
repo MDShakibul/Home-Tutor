@@ -6,7 +6,7 @@ const Checkout = () => {
 
     const handelCheckOut = (event) =>{
         event.preventDefault();
-        toast("Success Enroll It");
+        toast("Success enroll it");
     }
 
     return (
@@ -22,6 +22,7 @@ const Checkout = () => {
               type="text"
               className="form-control"
               placeholder="Enter Name"
+              required
               
             />
           </div>
@@ -31,7 +32,7 @@ const Checkout = () => {
               type="email"
               className="form-control"
               placeholder="Enter email"
-              
+              required
             />
           </div>
           <div className="form-group mb-3">
@@ -40,7 +41,7 @@ const Checkout = () => {
               type="text"
               className="form-control"
               placeholder="Enter phone number"
-              
+              required
             />
           </div>
 

@@ -25,6 +25,12 @@ const Login = () => {
     auth
   );
 
+  let errorElement;
+  if (error) {
+      errorElement = <p className='text-danger'>Error: {error.message}</p>
+}
+
+
   const handelSignIn = event =>{
     event.preventDefault();
     const email = emailRef.current.value;
@@ -32,7 +38,7 @@ const Login = () => {
     signInWithEmailAndPassword(email, password);
   }
 
-  if (loading) {
+  if (loading || sending) {
     return <p>Loading...</p>;
   }
 
@@ -40,6 +46,10 @@ const Login = () => {
 
   if(user){
     navigate(from, { replace: true });
+  }
+
+  const navigateRegiterPage = () =>{
+    navigate('/registration');
   }
 
   const handelForgetPassword = async () =>{
@@ -75,6 +85,7 @@ const Login = () => {
               required
             />
           </div>
+          {errorElement}
 
           <input
             type="submit"
@@ -83,11 +94,11 @@ const Login = () => {
           />
           <div className="d-flex justify-content-between">
             <p className="forgot-password text-right">
-              Forgot <button className="btn btn-link text-decoration-none" onClick={handelForgetPassword}>password?</button>
+              Forgot <button className="btn btn-link text-decoration-none p-0 pb-1" onClick={handelForgetPassword}>password?</button>
             </p>
 
-            <p className="forgot-password text-right">
-              You have no account? Please <Link className="text-decoration-none" to="/registration">Sign Up</Link>
+            <p className="forgot-password text-right ">
+              You have no account? Please <button className="btn btn-link text-decoration-none p-0 pb-1" onClick={navigateRegiterPage} >Sign Up</button>
             </p>
             </div>
             <SocialLogin></SocialLogin>

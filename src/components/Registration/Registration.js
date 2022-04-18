@@ -10,7 +10,7 @@ const Registration = () => {
     user,
     loading,
     error,
-  ] = useCreateUserWithEmailAndPassword(auth);
+  ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
 const navigate = useNavigate();
 
