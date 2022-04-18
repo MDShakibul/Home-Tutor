@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './Subject.css'
 
 const Subject = ({subject}) => {
-    const {img, name, no_of_class, price} = subject;
+    const {img, name, description, price} = subject;
     return (
         
         <Col lg={3} md={4} sm={6} xs={12} className='text-center subject-container p-0'>
@@ -15,7 +15,7 @@ const Subject = ({subject}) => {
 
             <div>
                 <p>{name}</p>
-                <p>{no_of_class}</p>
+                <p>{description}</p>
                 <p>{price}</p>
             </div>
 
